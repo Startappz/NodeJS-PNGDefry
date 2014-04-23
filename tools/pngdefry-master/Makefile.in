@@ -1,0 +1,18 @@
+CC = @CC@
+CFLAGS = @CFLAGS@
+LDFLAGS = @LDFLAGS@
+LIBS = @LIBS@
+prefix = @prefix@
+
+.PHONY: all clean
+
+all: pngdefry
+
+pngdefry: pngdefry.o
+	$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)
+
+install: pngdefry
+	@cp -f pngdefry $(prefix)/bin/pngdefry
+
+clean:
+	@rm -f pngdefry *.o

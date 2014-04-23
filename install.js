@@ -15,7 +15,7 @@ if (!fs.existsSync(tmp_dir)) {
     fs.mkdirSync(tmp_dir, '755');
 }
 if (!fs.existsSync(tools_dir)) {
-    fs.mkdirSync(tmp_dir, '755');
+    fs.mkdirSync(tools_dir, '755');
 }
 if (!fs.existsSync(pngdefy_bin_dir)) {
     fs.mkdirSync(pngdefy_bin_dir, '755');
