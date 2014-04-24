@@ -100,10 +100,7 @@ function attemptDownload(attemptsLeft) {
                                         });
 
 
-                                    } else {
-                                        console.log("pngdefry can not be made made");
                                     }
-
                                     pngdefry_make.on("error", function (err) {
                                         console.log(err);
                                     });
