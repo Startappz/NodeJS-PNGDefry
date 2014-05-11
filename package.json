@@ -1,7 +1,7 @@
 {
   "name": "node-pngdefry",
   "version": "0.0.1",
-  "description": "This is a wrapper for pngdefry command tool that reverses the optimzation XCode does on png images included into iPA files to make the images readable",
+  "description": "This is a wrapper for pngdefry command tool that reverses the optimzation XCode does on png images included into iPA files to make the images readable by browsers",
   "main": "./lib/index.js",
   "scripts": {
     "test": "test",

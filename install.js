@@ -41,75 +41,56 @@ function attemptDownload(attemptsLeft) {
             if (fs.existsSync(tempFile)) {
                 try {
                     var zip = new AdmZip(tempFile);
-                    zip.extractAllTo(tools_dir, true);
+                    zip.extractAllTo(tmp_dir, true);
                     fs.unlink(tempFile);
-
-
-                    var pngdefry_src_path = tools_dir + "/pngdefry-master";
+                    var pngdefry_src_path = tmp_dir + "/pngdefry-master";
                     if (fs.existsSync(pngdefry_src_path)) {
                         //Everything seems ok.
                         //Rename pngdefry path 
-
-                        //    console.log(fs.existsSync(pngdefry_src_path + "/pngdefry.c"));
-
                         //Let's configure the tool
-
-
-
                         try {
                             process.chdir(pngdefry_src_path);
-                            console.log('New directory: ' + process.cwd());
                         } catch (err) {
-                            console.log('chdir: ' + err);
+                            deleteFolderRecursive(tmp_dir);
                             process.exit();
                         }
                         var pngdefry_configure_file = "./configure";
                         var params = [pngdefry_configure_file, "--prefix", tools_dir];
                         var pngdefry_config = spawn('sh', params);
 
-                        console.log("trying to configure ");
                         pngdefry_config.on('exit', function (code, signal) {
                             if (code != null) {
-                                console.log("pngdefry configured");
-
-                                console.log("Trying to make ");
 
                                 var pngdefry_make = spawn('make');
 
                                 pngdefry_make.on('exit', function (code, signal) {
                                     if (code != null) {
-                                        console.log("pngdefry made");
-
-                                        console.log("Trying to make install ");
-
                                         var pngdefry_make_install = spawn('make', ['install']);
-
-
                                         pngdefry_make_install.on('exit', function (code, signal) {
                                             if (code != null) {
-
-                                                console.log("pngdefry made installed");
-                                                console.log(fs.existsSync(tools_dir + "/bin/pngdefry"));
+                                               // PNGdefy installed successfully
+                                                deleteFolderRecursive(tmp_dir);
                                             } else {
-                                                console.log("pngdefry not maded install");
+                                                attemptDownload(attemptsLeft - 1);
                                             }
                                         });
 
                                         pngdefry_make_install.on("error", function (err) {
-                                            console.log(err);
+                                            attemptDownload(attemptsLeft - 1);
                                         });
 
 
                                     }
                                     pngdefry_make.on("error", function (err) {
-                                        console.log(err);
+                                        attemptDownload(attemptsLeft - 1);
                                     });
 
 
                                 });
 
                             } else {
-                                console.log("pngdefry not configured");
+                                attemptDownload(attemptsLeft - 1);
+                                return;
                             }
                         });
 
@@ -122,6 +103,8 @@ function attemptDownload(attemptsLeft) {
                     } else {
                         if (attemptsLeft === 0) {
                             throw new Error("Can find pngdefry directory");
+
+                            deleteFolderRecursive(tmp_dir);
                             process.exit();
                         } else {
                             attemptDownload(attemptsLeft - 1);
@@ -129,10 +112,10 @@ function attemptDownload(attemptsLeft) {
                         }
                     }
                 } catch (e) {
-                    console.log("Trying for " + attemptsLeft);
                     fs.unlink(tempFile);
                     if (attemptsLeft === 0) {
                         throw new Error("Can extract pngdefry package");
+                        deleteFolderRecursive(tmp_dir);
                         process.exit();
                     } else {
                         attemptDownload(attemptsLeft - 1);
@@ -142,9 +125,9 @@ function attemptDownload(attemptsLeft) {
                 }
 
             } else {
-
                 if (attemptsLeft === 0) {
                     throw new Error("Can not find extracted directory");
+                    deleteFolderRecursive(tmp_dir);
                     process.exit();
                 } else {
                     attemptDownload(attemptsLeft - 1);
@@ -160,7 +143,19 @@ function attemptDownload(attemptsLeft) {
 
 }
 
-
+var deleteFolderRecursive = function (path) {
+    if (fs.existsSync(path)) {
+        fs.readdirSync(path).forEach(function (file, index) {
+            var curPath = path + "/" + file;
+            if (fs.lstatSync(curPath).isDirectory()) { // recurse
+                deleteFolderRecursive(curPath);
+            } else { // delete file
+                fs.unlinkSync(curPath);
+            }
+        });
+        fs.rmdirSync(path);
+    }
+};
 
 
 attemptDownload(4);
