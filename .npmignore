@@ -3,3 +3,5 @@ tmp
 tools
 node_modules
 tests/output/*
+!tests/output
+.DS_Store
