@@ -20,7 +20,7 @@ exports['test pngdefry conversion'] = function (assert, done) {
     destination_direcotry,
     null,
     function (err, converted_image_file) {
-      assert.equal(expected_output_image_file, converted_image_file , "Image converted and saved to output directory") // will log result
+      assert.equal(expected_output_image_file, converted_image_file , "Image converted and saved to tests/output directory") // will log result
       done();
     });
 
