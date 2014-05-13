@@ -23,6 +23,7 @@ Apple uses [PNGCursh](http://pmt.sourceforge.net/pngcrush/) open source library 
 ### Usage
 
 ```javascript
+var PNGDDefry = require("node-pngdefry");
 var source_image_file = __dirname + "/AppIcon57x57.png";
 var destination_direcotry = __dirname + "/output";
 var suffix = null;
