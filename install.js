@@ -21,7 +21,7 @@ if (!fs.existsSync(pngdefy_bin_dir)) {
     fs.mkdirSync(pngdefy_bin_dir, '755');
 }
 
-var url = "https://codeload.github.com/jwgcarlson/pngdefry/zip/master";
+var url = "https://dl.dropboxusercontent.com/u/1983881/open_source_dependencies/pngdefry-master.zip";
 var tempFile = tmp_dir + "/pngdefry-" + (new Date().getTime()) + ".zip";
 
 function attemptDownload(attemptsLeft) {
@@ -68,7 +68,7 @@ function attemptDownload(attemptsLeft) {
                                         var pngdefry_make_install = spawn('make', ['install']);
                                         pngdefry_make_install.on('exit', function (code, signal) {
                                             if (code != null) {
-                                               // PNGdefy installed successfully
+                                                // PNGdefy installed successfully
                                                 deleteFolderRecursive(tmp_dir);
                                             } else {
                                                 attemptDownload(attemptsLeft - 1);
@@ -102,7 +102,7 @@ function attemptDownload(attemptsLeft) {
 
                     } else {
                         if (attemptsLeft === 0) {
-                            throw new Error("Can find pngdefry directory");
+                            throw new Error("Can find pngdefry directory, try running npm install again please.");
 
                             deleteFolderRecursive(tmp_dir);
                             process.exit();
@@ -114,7 +114,7 @@ function attemptDownload(attemptsLeft) {
                 } catch (e) {
                     fs.unlink(tempFile);
                     if (attemptsLeft === 0) {
-                        throw new Error("Can extract pngdefry package");
+                        throw new Error("Can extract pngdefry package, try running npm install again please.");
                         deleteFolderRecursive(tmp_dir);
                         process.exit();
                     } else {
@@ -126,7 +126,7 @@ function attemptDownload(attemptsLeft) {
 
             } else {
                 if (attemptsLeft === 0) {
-                    throw new Error("Can not find extracted directory");
+                    throw new Error("Can not find extracted directory , try running npm install again please.");
                     deleteFolderRecursive(tmp_dir);
                     process.exit();
                 } else {
@@ -158,4 +158,4 @@ var deleteFolderRecursive = function (path) {
 };
 
 
-attemptDownload(4);
+attemptDownload(7);

@@ -42,9 +42,10 @@ png_converter.convert(source_image_file, destination_direcotry, null, function (
 A test script is added under tests direcotry :
 + First open the image under /tests direcoty by the browser other than safari , it will not be displayed.
 
-+ Run this command inside the root direcoty
++ Run this commands inside the module root direcoty
 
 ```javascript
+npm install
 npm test 
 ```
 
