@@ -1,7 +1,6 @@
 node-pngdefry
 ==============
-This is a nodejs wrapper for pngdefry command line tool that reverses the optimzation XCode does on png images included into iPA files to make the images readable by the browser.
-
+This is a nodejs wrapper for pngdefry command line tool that reverses the optimization XCode does on png images included into iPA files to make the images readable by the browser.
 
 ### Why you may need it ?
 
