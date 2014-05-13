@@ -48,7 +48,7 @@ A test script is added under tests direcotry :
 npm test 
 ```
 
-+ If you have successfully installed the package , A new image with the same name should be created under tests/ouput direcoty .
++ If you have successfully installed the package ,the test should pass and   new image with the same name should be created under tests/ouput direcoty .
 
 + Open the image with your browser it should be displayed.
 

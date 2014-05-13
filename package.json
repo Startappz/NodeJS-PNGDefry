@@ -1,30 +1,30 @@
 {
-  "name": "node-pngdefry",
-  "version": "0.0.1",
-  "description": "This is a wrapper for pngdefry command tool that reverses the optimzation XCode does on png images included into iPA files to make the images readable by browsers",
-  "main": "./lib/index.js",
-  "scripts": {
-    "test": "test",
-    "install": "node install.js"
-  },
-  "dependencies": {
-    "wget": "*",
-    "adm-zip": "*"
-  },
-  "keywords": [
+    "name": "node-pngdefry",
+    "version": "0.0.1",
+    "description": "This is a wrapper for pngdefry command tool that reverses the optimzation XCode does on png images included into iPA files to make the images readable by browsers",
+    "main": "./lib/index.js",
+    "scripts": {
+        "test": "node tests/test.js",
+        "install": "node install.js"
+    },
+    "dependencies": {
+        "wget": "*",
+        "adm-zip": "*"
+    },
+    "keywords": [
     "png",
     "apple",
     "ipa"
   ],
-  "author": "Mutaz Salahat",
-  "license": "MIT",
-  "devDependencies": {},
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Startappz/NodeJS-PNGDefry.git"
-  },
-  "bugs": {
-    "url": "https://github.com/Startappz/NodeJS-PNGDefry/issues"
-  },
-  "homepage": "https://github.com/Startappz/NodeJS-PNGDefry"
+    "author": "Mutaz Salahat",
+    "license": "MIT",
+    "devDependencies": { "test": ">=0.0.5" },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Startappz/NodeJS-PNGDefry.git"
+    },
+    "bugs": {
+        "url": "https://github.com/Startappz/NodeJS-PNGDefry/issues"
+    },
+    "homepage": "https://github.com/Startappz/NodeJS-PNGDefry"
 }
