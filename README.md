@@ -10,7 +10,7 @@ Apple uses [PNGCursh](http://pmt.sourceforge.net/pngcrush/) open source library 
 
 ### Platforms supported:
 
-+ OSX (Drawin) : Must have buitl tools ( config , make ) installed.
++ OSX (Darwin) : Must have buitl tools ( config , make ) installed.
 + Linux.
 
 
