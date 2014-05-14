@@ -35,7 +35,7 @@ png_converter.convert(source_image_file, destination_direcotry, null, function (
 
 + source_image_file : the source for the png image to be defried by the library.
 + destination_directory :  the destination direcotry where the result image need to be saved , by default it is saved by the original image name.
-+ suffix : in case you want to save it in the same original image direcotry , you need to may use this argumant to add a suffix to the saved image name.
++ suffix : in case you want to save the output image in the same original image direcotry , you need to use this argumant to add a suffix to the saved image name.
 
 ### Test
 
